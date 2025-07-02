@@ -1,8 +1,11 @@
+"use client"
+
+import { MainOverview } from "@/components/main/overview";
+
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold mb-4">Smart Monitor</h1>
-      <p className="text-muted-foreground">This is just the beginning.</p>
+    <main className="relative h-screen w-screen p-8">
+      <MainOverview/>
     </main>
   );
 }
