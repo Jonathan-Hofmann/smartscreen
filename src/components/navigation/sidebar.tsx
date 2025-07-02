@@ -23,7 +23,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button"
 import Link from "next/link"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
-import { useAuth } from "@/contexts/auth"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
 
@@ -72,7 +71,6 @@ const mainLinks = [
 export const AppSidebar = () => {
 
     const { state, open } = useSidebar();
-    const auth = useAuth();
     const path = usePathname();
 
     return (
@@ -156,54 +154,9 @@ export const AppSidebar = () => {
                     )
                 })}
             </SidebarContent>
-            <SidebarFooter>
-                {open ?
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" className="w-full justify-start">
-                                <Avatar className="h-5 w-5 mr-2">
-                                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                                    <AvatarFallback>JD</AvatarFallback>
-                                </Avatar>
-                                <span>John Doe</span>
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-[230px]">
-                            <div className="flex flex-col items-center py-4 gap-2">
-                                <Avatar className="h-14 w-14">
-                                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                                    <AvatarFallback>JD</AvatarFallback>
-                                </Avatar>
-                                <p>John Doe</p>
-                            </div>
-                            {/* <DropdownMenuSeparator /> */}
-                            <DropdownMenuItem onClick={() => { auth.handleLogout() }}>Logout</DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                    :
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <div className="h-8 w-8 p-1">
-                                <Avatar className="h-6 w-6">
-                                    <AvatarImage src="#" alt="@shadcn" />
-                                    <AvatarFallback>Logo</AvatarFallback>
-                                </Avatar>
-                            </div>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-[230px]">
-                            <div className="flex flex-col items-center py-4 gap-2">
-                                <Avatar className="h-14 w-14">
-                                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                                    <AvatarFallback>JD</AvatarFallback>
-                                </Avatar>
-                                <p>John Doe</p>
-                            </div>
-                            {/* <DropdownMenuSeparator /> */}
-                            <DropdownMenuItem onClick={() => { auth.handleLogout() }}>Logout</DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                }
-            </SidebarFooter>
+            {/* <SidebarFooter>
+                
+            </SidebarFooter> */}
             <SidebarRail />
         </Sidebar>
     )
