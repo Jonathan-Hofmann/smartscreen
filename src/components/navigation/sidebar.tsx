@@ -94,14 +94,14 @@ export const AppSidebar = () => {
             <SidebarContent>
                 {mainLinks.map((group) => {
                     return (
-                        <SidebarGroup>
+                        <SidebarGroup key={group.title} >
                             {group.showTitle && <SidebarGroupLabel>{group.title}</SidebarGroupLabel>}
                             <SidebarGroupContent>
                                 <SidebarMenu>
                                     {group.items.map((link) => {
                                         if (link.sublinks) {
                                             return (
-                                                <Collapsible open={path.includes(link.url)} className="group/collapsible">
+                                                <Collapsible key={link.title} open={path.includes(link.url)} className="group/collapsible">
                                                     <SidebarMenuItem>
                                                         <CollapsibleTrigger asChild>
                                                             <SidebarMenuButton asChild className={cn([path === link.url && "bg-muted"])}>
@@ -120,7 +120,7 @@ export const AppSidebar = () => {
                                                             <SidebarMenuSub>
                                                                 {link.sublinks.map((sublink) => {
                                                                     return (
-                                                                        <SidebarMenuSubItem>
+                                                                        <SidebarMenuSubItem key={sublink.title}>
                                                                             <SidebarMenuButton asChild className={cn([path === sublink.url && "bg-muted"])}>
                                                                                 <Link href={sublink.url}>
                                                                                     <sublink.icon />
@@ -137,7 +137,7 @@ export const AppSidebar = () => {
                                             )
                                         } else {
                                             return (
-                                                <SidebarMenuItem>
+                                                <SidebarMenuItem key={link.title}>
                                                     <SidebarMenuButton asChild className={cn([path === link.url && "bg-muted"])}>
                                                         <Link href={link.url}>
                                                             <link.icon />
